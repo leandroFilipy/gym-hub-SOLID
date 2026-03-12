@@ -7,7 +7,6 @@ import java.util.Date;
 
 @Entity
 @Table(name = "aluno")
-@RequiredArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

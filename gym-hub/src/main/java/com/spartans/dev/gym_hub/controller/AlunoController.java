@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
 import java.util.List;
 
-@RequestMapping
-@RestController("/alunos")
+@RestController
+@RequestMapping("/alunos")
 @RequiredArgsConstructor
 public class AlunoController {
 
     private final AlunoService alunoService;
 
     @PostMapping("/cadastrar")
-    public AlunoResponse criarAluno (AlunoRequest alunoRequest){
+    public AlunoResponse criarAluno (@RequestBody AlunoRequest alunoRequest){
         try {
             return alunoService.criarAluno(alunoRequest);
         }catch (RuntimeException e){
@@ -54,9 +54,10 @@ public class AlunoController {
     }
 
     @DeleteMapping("/deletar/{id}")
-    public void deletarAluno(@PathVariable long id){
+    public ResponseEntity<String> deletarAluno(@PathVariable long id){
         try{
             alunoService.deletarAluno(id);
+            return ResponseEntity.status(201).body("Usuário deletado");
         }catch (RuntimeException e){
             throw new RuntimeException(e.getMessage());
         }

@@ -22,6 +22,11 @@ public class AlunoService {
     public AlunoResponse criarAluno(AlunoRequest alunoRequest){
 
         Aluno aluno = alunoMapper.paraEntidade(alunoRequest);
+
+        if(alunoRepository.existsById(aluno.getId())){
+            throw new RuntimeException("O aluno já existe");
+        }
+
         Aluno aluno2 = alunoRepository.save(aluno);
         AlunoResponse alunoResponse = alunoMapper.paraDTO(aluno2);
 
