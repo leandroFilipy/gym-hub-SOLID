@@ -20,19 +20,27 @@ public class EquipamentoService {
 
     public EquipamentoResponse criarEquipamento(EquipamentoRequest equipamentoRequest){
         Equipamento equipamento = equipamentoMapper.paraEntidade(equipamentoRequest);
+        if(equipamentoRepository.existsById(equipamento.getId())){
+
+            throw new RuntimeException("Já existe um equipamento com este id");
+        }
         EquipamentoResponse equipamentoResponse = equipamentoMapper.paraDTO(equipamento);
 
         return equipamentoResponse;
     }
 
     public List<EquipamentoResponse> listarEquipamentos(){
-        List<Equipamento> equipamentos = equipamentoRepository.findAll();
-        List<EquipamentoResponse> dto = new ArrayList<>();
+        if(equipamentoRepository.findAll().isEmpty()){
+            throw new RuntimeException("Não existe nenhum equipamento cadastrado");
+        }else {
+            List<Equipamento> equipamentos = equipamentoRepository.findAll();
+            List<EquipamentoResponse> dto = new ArrayList<>();
 
-        for(Equipamento equipamento : equipamentos){
-            dto.add(equipamentoMapper.paraDTO(equipamento));
+            for (Equipamento equipamento : equipamentos) {
+                dto.add(equipamentoMapper.paraDTO(equipamento));
+            }
+            return dto;
         }
-        return dto;
     }
 
     public EquipamentoResponse listarPorId(long id){
@@ -55,8 +63,12 @@ public class EquipamentoService {
         return equipamentoResponse;
     }
 
-    public void deletarEquipamento(long id){
-        equipamentoRepository.deleteById(id);
+    public void deletarEquipamento(long id) {
+        if (equipamentoRepository.existsById(id)) {
+            equipamentoRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Não existe uma aula com este ID");
+        }
     }
 
 }

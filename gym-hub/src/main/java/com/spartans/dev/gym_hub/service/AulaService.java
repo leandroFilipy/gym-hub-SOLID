@@ -20,22 +20,32 @@ public class AulaService {
 
 
     public AulaResponse criarAula(AulaRequest aulaRequest){
-
         Aula aula = aulaMapper.paraEntidade(aulaRequest);
+        if(aulaRepository.existsById(aula.getId())){
+
+            throw new RuntimeException("Já existe uma aula com este id");
+        }else {
+
         Aula aulaSalva = aulaRepository.save(aula);
         AulaResponse aulaResponse = aulaMapper.paraDTO(aulaSalva);
 
         return aulaResponse;
+        }
     }
 
     public List<AulaResponse> listarAulas (){
-        List<Aula> aulas = aulaRepository.findAll();
-        List<AulaResponse> dto = new ArrayList<>();
+        if(aulaRepository.findAll().isEmpty()){
+            throw new RuntimeException("Não existe nenhum aluno cadastrado");
 
-        for(Aula aula: aulas){
-            dto.add(aulaMapper.paraDTO(aula));
+        }else {
+            List<Aula> aulas = aulaRepository.findAll();
+            List<AulaResponse> dto = new ArrayList<>();
+
+            for (Aula aula : aulas) {
+                dto.add(aulaMapper.paraDTO(aula));
+            }
+            return dto;
         }
-        return dto;
     }
 
     public AulaResponse listarAulaPorId(long id){
@@ -57,6 +67,12 @@ public class AulaService {
     }
     public void deletarAula(long id){
 
-        aulaRepository.deleteById(id);
+        if(aulaRepository.existsById(id)){
+            aulaRepository.deleteById(id);
+
+        }else {
+            throw new RuntimeException("Não existe uma aula com este ID");
+        }
+
     }
 }

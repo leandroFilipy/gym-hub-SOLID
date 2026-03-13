@@ -34,6 +34,9 @@ public class ProfessorService {
     }
 
     public List<ProfessorResponse> listarProfessores (){
+        if(professorRepository.findAll().isEmpty()){
+            throw new RuntimeException("Não existe nenhum professorgi cadastrado");
+        }
         List<Professor> professores = professorRepository.findAll();
         List<ProfessorResponse> dto = new ArrayList<>();
 

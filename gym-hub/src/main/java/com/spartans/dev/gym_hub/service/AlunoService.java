@@ -25,24 +25,29 @@ public class AlunoService {
 
         if(alunoRepository.existsById(aluno.getId())){
             throw new RuntimeException("O aluno já existe");
+        }else {
+
+            Aluno aluno2 = alunoRepository.save(aluno);
+            AlunoResponse alunoResponse = alunoMapper.paraDTO(aluno2);
+
+            return alunoResponse;
         }
-
-        Aluno aluno2 = alunoRepository.save(aluno);
-        AlunoResponse alunoResponse = alunoMapper.paraDTO(aluno2);
-
-        return alunoResponse;
     }
 
     public List<AlunoResponse> listarAlunos (){
 
-        List<Aluno> alunos = alunoRepository.findAll();
-        List<AlunoResponse> dtos = new ArrayList<>();
+        if(alunoRepository.findAll().isEmpty()){
+            throw new RuntimeException("Não existe nenhum aluno cadastrado");
+        }else {
+            List<Aluno> alunos = alunoRepository.findAll();
+            List<AlunoResponse> dtos = new ArrayList<>();
 
-        for(Aluno aluno: alunos){
-            dtos.add(alunoMapper.paraDTO(aluno));
+            for (Aluno aluno : alunos) {
+                dtos.add(alunoMapper.paraDTO(aluno));
+            }
+
+            return dtos;
         }
-
-        return dtos;
     }
 
     public AlunoResponse listarPorId(long id){
