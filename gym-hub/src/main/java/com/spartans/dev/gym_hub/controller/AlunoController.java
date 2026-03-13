@@ -1,65 +1,51 @@
 package com.spartans.dev.gym_hub.controller;
 
-import com.spartans.dev.gym_hub.dto.aluno.AlunoRequest;
-import com.spartans.dev.gym_hub.dto.aluno.AlunoResponse;
+import com.spartans.dev.gym_hub.dto.aluno.AlunoRequisicaoDTO;
+import com.spartans.dev.gym_hub.dto.aluno.AlunoRespostaDTO;
+import com.spartans.dev.gym_hub.dto.aula.AulaRequisicaoDTO;
+import com.spartans.dev.gym_hub.dto.aula.AulaRespostaDTO;
 import com.spartans.dev.gym_hub.service.AlunoService;
+import com.spartans.dev.gym_hub.service.AulaService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/alunos")
 @RequiredArgsConstructor
+@RequestMapping("/alunos")
 public class AlunoController {
-
     private final AlunoService alunoService;
 
     @PostMapping("/cadastrar")
-    public AlunoResponse criarAluno (@RequestBody AlunoRequest alunoRequest){
-        try {
-            return alunoService.criarAluno(alunoRequest);
-        }catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
+    public AlunoRespostaDTO create(@RequestBody AlunoRequisicaoDTO aluno) {
+        return alunoService.create(aluno);
+
     }
 
-    @GetMapping("/listar")
-    public List<AlunoResponse> listarAlunos (){
-        try {
-            return alunoService.listarAlunos();
-        }catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
+    @GetMapping("/listarTodos")
+    public List<AlunoRespostaDTO> listAll() {
+        return alunoService.listAll();
+
     }
 
-    @GetMapping("/listar/{id}")
-    public AlunoResponse listarAlunoPorId(@PathVariable long id){
-        try {
-            return alunoService.listarPorId(id);
-        }catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
+
+    @GetMapping("/listarId/{id}")
+    public AlunoRespostaDTO listId(@PathVariable("id") Long id) {
+        return alunoService.findById(id);
+
     }
 
     @PutMapping("/atualizar/{id}")
-    public AlunoResponse atualizarAluno(@PathVariable long id, @RequestBody AlunoRequest alunoRequest){
-        try{
-            return alunoService.atualizarAluno(id, alunoRequest);
-        }catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
+    public AlunoRespostaDTO update(@PathVariable("id")long id, @RequestBody AlunoRequisicaoDTO alunoRequisicaoDTO) {
+        return alunoService.update(id,alunoRequisicaoDTO);
+
     }
 
+
     @DeleteMapping("/deletar/{id}")
-    public ResponseEntity<String> deletarAluno(@PathVariable long id){
-        try{
-            alunoService.deletarAluno(id);
-            return ResponseEntity.status(201).body("Usuário deletado");
-        }catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
+    public void delete(@PathVariable("id")Long id){
+        alunoService.delete(id);
     }
 
 }

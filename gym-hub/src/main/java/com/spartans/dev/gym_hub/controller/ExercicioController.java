@@ -1,8 +1,7 @@
-
 package com.spartans.dev.gym_hub.controller;
 
-import com.spartans.dev.gym_hub.dto.exercicio.ExercicioRequest;
-import com.spartans.dev.gym_hub.dto.exercicio.ExercicioResponse;
+import com.spartans.dev.gym_hub.dto.exercicio.ExercicioRequisicaoDTO;
+import com.spartans.dev.gym_hub.dto.exercicio.ExercicioRespostaDTO;
 import com.spartans.dev.gym_hub.service.ExercicioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +17,13 @@ public class ExercicioController {
     private final ExercicioService exercicioService;
 
     @PostMapping("/cadastrar")
-    public ExercicioResponse create(@RequestBody ExercicioRequest exercicioRequisicaoDTO) {
+    public ExercicioRespostaDTO create(@RequestBody ExercicioRequisicaoDTO exercicioRequisicaoDTO) {
         return exercicioService.create(exercicioRequisicaoDTO);
 
     }
 
     @GetMapping("/listarTodos")
-    public List<ExercicioResponse> listAll() {
+    public List<ExercicioRespostaDTO> listAll() {
         return exercicioService.listAll();
 
     }

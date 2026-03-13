@@ -1,14 +1,19 @@
 package com.spartans.dev.gym_hub.service;
 
-import com.spartans.dev.gym_hub.dto.professor.ProfessorRequest;
-import com.spartans.dev.gym_hub.dto.professor.ProfessorResponse;
-import com.spartans.dev.gym_hub.mapper.professor.ProfessorMapper;
+import com.spartans.dev.gym_hub.dto.aula.AulaRequisicaoDTO;
+import com.spartans.dev.gym_hub.dto.aula.AulaRespostaDTO;
+import com.spartans.dev.gym_hub.dto.professor.ProfessorRequisicaoDTO;
+import com.spartans.dev.gym_hub.dto.professor.ProfessorRespostaDTO;
+import com.spartans.dev.gym_hub.mapper.AulaMapper;
+import com.spartans.dev.gym_hub.mapper.ProfessorMapper;
+import com.spartans.dev.gym_hub.model.Aula;
 import com.spartans.dev.gym_hub.model.Professor;
+import com.spartans.dev.gym_hub.repository.AulaRepository;
 import com.spartans.dev.gym_hub.repository.ProfessorRepository;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

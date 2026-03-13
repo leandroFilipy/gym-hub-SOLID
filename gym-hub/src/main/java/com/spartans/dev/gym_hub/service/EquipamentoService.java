@@ -1,8 +1,8 @@
 package com.spartans.dev.gym_hub.service;
 
-import com.spartans.dev.gym_hub.dto.equipamento.EquipamentoRequest;
-import com.spartans.dev.gym_hub.dto.equipamento.EquipamentoResponse;
-import com.spartans.dev.gym_hub.mapper.equipamento.EquipamentoMapper;
+import com.spartans.dev.gym_hub.dto.equipamento.EquipamentoRequisicaoDTO;
+import com.spartans.dev.gym_hub.dto.equipamento.EquipamentoRespostaDTO;
+import com.spartans.dev.gym_hub.mapper.EquipamentoMapper;
 import com.spartans.dev.gym_hub.model.Equipamento;
 import com.spartans.dev.gym_hub.repository.EquipamentoRepository;
 import lombok.RequiredArgsConstructor;
@@ -51,7 +51,7 @@ public class EquipamentoService {
         return equipamentoResponse;
     }
 
-    public EquipamentoResponse atualizar(long id, EquipamentoRequest equipamentoRequest){
+    public EquipamentoRespostaDTO atualizar(long id, EquipamentoRespostaDTO equipamentoRequest) {
 
         Equipamento equipamento = equipamentoRepository.findById(id).orElseThrow(() -> new RuntimeException("Não existe usuário com este id"));
         equipamento.setNome(equipamentoRequest.nome());

@@ -1,59 +1,63 @@
 package com.spartans.dev.gym_hub.model;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
-@Table(name = "aluno")
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "aluno")
 public class Aluno {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
-    @Column(name = "nome", nullable = false)
+    @Column(nullable = false)
     private String nome;
 
-    @Column(name = "altura", nullable = false)
-    private double altura;
+    @Column(nullable = false)
+    private Double altura;
 
-    @Column(name = "massa_corporal", nullable = false)
-    private double massaCorporal;
+    @Column(nullable = false)
+    private Double massaCorporal;
 
-    @Column(name = "data_nascimento", nullable = false)
-    private Date dataNascimento;
+    @Column(nullable = false)
+    private Date nascimento;
 
-    @Column(name = "user",nullable = false)
+    @Column(nullable = false)
     private String user;
 
-    @Column(name = "senha",nullable = false)
+    @Column(nullable = false)
     private String senha;
 
-    @Column(name = "data_cadastro", nullable = false)
+    @Column(nullable = false)
     private Date dataCadastro;
 
-    @Column(name = "imc" ,nullable = false)
+    @Column(nullable = false)
     private String imc;
 
-    @Column(name = "cpf", nullable = false)
+    @Column(nullable = false)
     private String cpf;
 
-    public Aluno(String nome, double altura, double massaCorporal, Date dataNascimento, String user, String senha, Date dataCadastro, String imc, String cpf) {
+
+    public Aluno(String nome, Double altura, Double massaCorporal, Date nascimento, String user, String senha, Date dataCadastro, String imc, String cpf) {
         this.nome = nome;
         this.altura = altura;
         this.massaCorporal = massaCorporal;
-        this.dataNascimento = dataNascimento;
+        this.nascimento = nascimento;
         this.user = user;
         this.senha = senha;
         this.dataCadastro = dataCadastro;
         this.imc = imc;
         this.cpf = cpf;
     }
-
 }

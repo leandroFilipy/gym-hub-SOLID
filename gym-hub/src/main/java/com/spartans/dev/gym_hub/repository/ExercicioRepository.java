@@ -1,4 +1,3 @@
-
 package com.spartans.dev.gym_hub.repository;
 
 import com.spartans.dev.gym_hub.model.Exercicio;

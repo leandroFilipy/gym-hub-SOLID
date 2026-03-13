@@ -1,14 +1,13 @@
 package com.spartans.dev.gym_hub.service;
 
-import com.spartans.dev.gym_hub.dto.aluno.AlunoRequest;
-import com.spartans.dev.gym_hub.dto.aluno.AlunoResponse;
-import com.spartans.dev.gym_hub.mapper.aluno.AlunoMapper;
+import com.spartans.dev.gym_hub.dto.aluno.AlunoRequisicaoDTO;
+import com.spartans.dev.gym_hub.dto.aluno.AlunoRespostaDTO;
+import com.spartans.dev.gym_hub.mapper.AlunoMapper;
 import com.spartans.dev.gym_hub.model.Aluno;
 import com.spartans.dev.gym_hub.repository.AlunoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

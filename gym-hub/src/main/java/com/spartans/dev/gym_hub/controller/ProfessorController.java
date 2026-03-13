@@ -1,17 +1,21 @@
 package com.spartans.dev.gym_hub.controller;
 
-import com.spartans.dev.gym_hub.dto.professor.ProfessorRequest;
-import com.spartans.dev.gym_hub.dto.professor.ProfessorResponse;
+import com.spartans.dev.gym_hub.dto.aula.AulaRequisicaoDTO;
+import com.spartans.dev.gym_hub.dto.aula.AulaRespostaDTO;
+import com.spartans.dev.gym_hub.dto.professor.ProfessorRequisicaoDTO;
+import com.spartans.dev.gym_hub.dto.professor.ProfessorRespostaDTO;
+import com.spartans.dev.gym_hub.service.AulaService;
 import com.spartans.dev.gym_hub.service.ProfessorService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
-@RequestMapping("/professores")
 @RequiredArgsConstructor
+@RequestMapping("/professores")
 public class ProfessorController {
 
     private final ProfessorService professorService;
