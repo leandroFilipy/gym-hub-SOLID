@@ -1,7 +1,7 @@
 package com.spartans.dev.gym_hub.controller;
 
-import com.spartans.dev.gym_hub.dto.exercicio.ExercicioRequisicaoDTO;
-import com.spartans.dev.gym_hub.dto.exercicio.ExercicioRespostaDTO;
+import com.spartans.dev.gym_hub.dto.exercicio.ExercicioRequest;
+import com.spartans.dev.gym_hub.dto.exercicio.ExercicioResponse;
 import com.spartans.dev.gym_hub.service.ExercicioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

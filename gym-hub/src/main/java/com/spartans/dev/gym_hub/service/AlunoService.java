@@ -1,8 +1,8 @@
 package com.spartans.dev.gym_hub.service;
 
-import com.spartans.dev.gym_hub.dto.aluno.AlunoRequisicaoDTO;
-import com.spartans.dev.gym_hub.dto.aluno.AlunoRespostaDTO;
-import com.spartans.dev.gym_hub.mapper.AlunoMapper;
+import com.spartans.dev.gym_hub.dto.aluno.AlunoRequest;
+import com.spartans.dev.gym_hub.dto.aluno.AlunoResponse;
+import com.spartans.dev.gym_hub.mapper.aluno.AlunoMapper;
 import com.spartans.dev.gym_hub.model.Aluno;
 import com.spartans.dev.gym_hub.repository.AlunoRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class AlunoService {
     private final AlunoRepository alunoRepository;
     private final AlunoMapper alunoMapper;
 
-    public AlunoResponse criarAluno(AlunoRequest alunoRequest){
+    public AlunoResponse create(AlunoRequest alunoRequest){
 
         Aluno aluno = alunoMapper.paraEntidade(alunoRequest);
 
@@ -33,7 +33,7 @@ public class AlunoService {
         }
     }
 
-    public List<AlunoResponse> listarAlunos (){
+    public List<AlunoResponse> listAll (){
 
         if(alunoRepository.findAll().isEmpty()){
             throw new RuntimeException("Não existe nenhum aluno cadastrado");
@@ -49,7 +49,7 @@ public class AlunoService {
         }
     }
 
-    public AlunoResponse listarPorId(long id){
+    public AlunoResponse findById(long id){
 
         Aluno aluno = alunoRepository.findById(id).orElseThrow(() -> new RuntimeException("Não existe um aluno com este id"));
         AlunoResponse alunoResponse = alunoMapper.paraDTO(aluno);
@@ -57,7 +57,7 @@ public class AlunoService {
         return alunoResponse;
     }
 
-    public AlunoResponse atualizarAluno(long id, AlunoRequest alunoRequest){
+    public AlunoResponse update(long id, AlunoRequest alunoRequest){
 
         Aluno aluno = alunoRepository.findById(id).orElseThrow(() -> new RuntimeException("Não existe um aluno com este id"));
         aluno.setNome(alunoRequest.nome());
@@ -74,7 +74,7 @@ public class AlunoService {
         return alunoResponse;
     }
 
-    public void deletarAluno(long id){
+    public void delete(long id){
         if(alunoRepository.existsById(id)){
             alunoRepository.deleteById(id);
 

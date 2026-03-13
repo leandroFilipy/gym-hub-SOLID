@@ -1,19 +1,14 @@
 package com.spartans.dev.gym_hub.service;
 
-import com.spartans.dev.gym_hub.dto.aula.AulaRequisicaoDTO;
-import com.spartans.dev.gym_hub.dto.aula.AulaRespostaDTO;
-import com.spartans.dev.gym_hub.dto.professor.ProfessorRequisicaoDTO;
-import com.spartans.dev.gym_hub.dto.professor.ProfessorRespostaDTO;
-import com.spartans.dev.gym_hub.mapper.AulaMapper;
-import com.spartans.dev.gym_hub.mapper.ProfessorMapper;
-import com.spartans.dev.gym_hub.model.Aula;
+import com.spartans.dev.gym_hub.dto.professor.ProfessorRequest;
+import com.spartans.dev.gym_hub.dto.professor.ProfessorResponse;
+import com.spartans.dev.gym_hub.mapper.professor.ProfessorMapper;
 import com.spartans.dev.gym_hub.model.Professor;
-import com.spartans.dev.gym_hub.repository.AulaRepository;
 import com.spartans.dev.gym_hub.repository.ProfessorRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,7 +18,7 @@ public class ProfessorService {
     private final ProfessorRepository professorRepository;
     private final ProfessorMapper professorMapper;
 
-    public ProfessorResponse criarProfessor(ProfessorRequest professorRequest){
+    public ProfessorResponse create(ProfessorRequest professorRequest){
 
         Professor professor = professorMapper.paraEntidade(professorRequest);
 
@@ -38,7 +33,7 @@ public class ProfessorService {
         }
     }
 
-    public List<ProfessorResponse> listarProfessores (){
+    public List<ProfessorResponse> listAll (){
         if(professorRepository.findAll().isEmpty()){
             throw new RuntimeException("Não existe nenhum professorgi cadastrado");
         }
@@ -52,7 +47,7 @@ public class ProfessorService {
         return dto;
     }
 
-    public ProfessorResponse listarProfessorPorId(long id){
+    public ProfessorResponse findById(long id){
 
         Professor professor = professorRepository.findById(id).orElseThrow(() -> new RuntimeException("Este professor não existe"));
         ProfessorResponse professorResponse = professorMapper.paraDTO(professor);
@@ -60,7 +55,7 @@ public class ProfessorService {
         return professorResponse;
     }
 
-    public ProfessorResponse atualizarProfessor(long id, ProfessorRequest professorRequest){
+    public ProfessorResponse update(long id, ProfessorRequest professorRequest){
 
         Professor professor = professorRepository.findById(id).orElseThrow(() -> new RuntimeException("Não existe professor com este id"));
         professor.setNome(professorRequest.nome());
@@ -74,7 +69,7 @@ public class ProfessorService {
         return professorResponse;
     }
 
-    public void deletarProfessor(long id){
+    public void delete(long id){
         if(professorRepository.existsById(id)){
             professorRepository.deleteById(id);
         }else {

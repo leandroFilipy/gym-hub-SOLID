@@ -1,6 +1,5 @@
 package com.spartans.dev.gym_hub.model;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

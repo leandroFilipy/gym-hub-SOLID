@@ -24,7 +24,7 @@ public record AlunoRequest(
 
         @PastOrPresent(message = "A data deve ser compátivel")
         @NotBlank(message = "O campo não deve ser nulo")
-        Date dataNascimento,
+        Date nascimento,
 
         @NotBlank(message = "O campo não deve ser nulo")
         @Length(min = 6, max = 40)

@@ -1,14 +1,11 @@
 package com.spartans.dev.gym_hub.controller;
 
-import com.spartans.dev.gym_hub.dto.aula.AulaRequisicaoDTO;
-import com.spartans.dev.gym_hub.dto.aula.AulaRespostaDTO;
-import com.spartans.dev.gym_hub.model.Aula;
+import com.spartans.dev.gym_hub.dto.aula.AulaRequest;
+import com.spartans.dev.gym_hub.dto.aula.AulaResponse;
 import com.spartans.dev.gym_hub.service.AulaService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @RestController

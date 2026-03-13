@@ -1,7 +1,7 @@
 package com.spartans.dev.gym_hub.service;
 
-import com.spartans.dev.gym_hub.dto.exercicio.ExercicioRequisicaoDTO;
-import com.spartans.dev.gym_hub.dto.exercicio.ExercicioRespostaDTO;
+import com.spartans.dev.gym_hub.dto.exercicio.ExercicioRequest;
+import com.spartans.dev.gym_hub.dto.exercicio.ExercicioResponse;
 import com.spartans.dev.gym_hub.mapper.ExercicioMapper;
 import com.spartans.dev.gym_hub.model.Exercicio;
 import com.spartans.dev.gym_hub.repository.ExercicioRepository;
@@ -18,7 +18,7 @@ public class ExercicioService {
     private final ExercicioMapper exercicioMapper;
 
 
-    public ExercicioRespostaDTO create(ExercicioRequisicaoDTO exercicioRequisicaoDTO) {
+    public ExercicioResponse create(ExercicioRequest exercicioRequisicaoDTO) {
 
         Exercicio exercicio = exercicioMapper.paraEntidade(exercicioRequisicaoDTO);
 
@@ -32,7 +32,7 @@ public class ExercicioService {
     }
 
 
-    public List<ExercicioRespostaDTO> listAll() {
+    public List<ExercicioResponse> listAll() {
 
         List<Exercicio> exercicios = exercicioRepository.findAll();
 
@@ -46,7 +46,7 @@ public class ExercicioService {
 
     }
 
-    public ExercicioRespostaDTO findById(long id) {
+    public ExercicioResponse findById(long id) {
         Exercicio exercicio = exercicioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Exercicio não existe!"));
 
@@ -54,7 +54,7 @@ public class ExercicioService {
     }
 
 
-    public ExercicioRespostaDTO update(Long id, ExercicioRequisicaoDTO exercicioRequisicaoDTO) {
+    public ExercicioResponse update(Long id, ExercicioRequest exercicioRequisicaoDTO) {
         Exercicio exercicioExistente = exercicioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Exercicio nao existe"));
 

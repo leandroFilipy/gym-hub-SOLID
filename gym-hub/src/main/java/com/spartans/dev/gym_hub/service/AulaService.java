@@ -1,8 +1,8 @@
 package com.spartans.dev.gym_hub.service;
 
-import com.spartans.dev.gym_hub.dto.aula.AulaRequisicaoDTO;
-import com.spartans.dev.gym_hub.dto.aula.AulaRespostaDTO;
-import com.spartans.dev.gym_hub.mapper.AulaMapper;
+import com.spartans.dev.gym_hub.dto.aula.AulaRequest;
+import com.spartans.dev.gym_hub.dto.aula.AulaResponse;
+import com.spartans.dev.gym_hub.mapper.aula.AulaMapper;
 import com.spartans.dev.gym_hub.model.Aula;
 import com.spartans.dev.gym_hub.repository.AulaRepository;
 import lombok.RequiredArgsConstructor;
