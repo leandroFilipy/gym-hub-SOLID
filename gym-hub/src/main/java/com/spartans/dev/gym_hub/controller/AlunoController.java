@@ -14,33 +14,33 @@ import java.util.List;
 public class AlunoController {
     private final AlunoService alunoService;
 
-    @PostMapping("/cadastrar")
+    @PostMapping("/register")
     public AlunoResponse create(@RequestBody AlunoRequest aluno) {
         return alunoService.create(aluno);
 
     }
 
-    @GetMapping("/listarTodos")
+    @GetMapping("/list")
     public List<AlunoResponse> listAll() {
         return alunoService.listAll();
 
     }
 
 
-    @GetMapping("/listarId/{id}")
+    @GetMapping("/list/{id}")
     public AlunoResponse listId(@PathVariable("id") Long id) {
         return alunoService.findById(id);
 
     }
 
-    @PutMapping("/atualizar/{id}")
+    @PutMapping("/update/{id}")
     public AlunoResponse update(@PathVariable("id")long id, @RequestBody AlunoRequest alunoRequisicaoDTO) {
         return alunoService.update(id,alunoRequisicaoDTO);
 
     }
 
 
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable("id")Long id){
         alunoService.delete(id);
     }

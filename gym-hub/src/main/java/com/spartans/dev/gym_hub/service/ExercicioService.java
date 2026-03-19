@@ -21,11 +21,6 @@ public class ExercicioService {
     public ExercicioResponse create(ExercicioRequest exercicioRequisicaoDTO) {
 
         Exercicio exercicio = exercicioMapper.paraEntidade(exercicioRequisicaoDTO);
-
-        if (exercicio.getId() != null && exercicioRepository.existsById(exercicio.getId())) {
-            throw new RuntimeException("Exercicio ja existente");
-        }
-
         Exercicio exercicioSalvo = exercicioRepository.save(exercicio);
 
         return exercicioMapper.paraRespostaDTO(exercicioSalvo);

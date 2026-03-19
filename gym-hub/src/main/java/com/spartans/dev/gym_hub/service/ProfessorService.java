@@ -22,15 +22,11 @@ public class ProfessorService {
 
         Professor professor = professorMapper.paraEntidade(professorRequest);
 
-        if(professorRepository.existsById(professor.getId())){
-            throw new RuntimeException("Professor já existe");
-        }else {
-            Professor professorSalvo = professorRepository.save(professor);
 
+            Professor professorSalvo = professorRepository.save(professor);
             ProfessorResponse professorResponse = professorMapper.paraDTO(professorSalvo);
 
             return professorResponse;
-        }
     }
 
     public List<ProfessorResponse> listAll (){

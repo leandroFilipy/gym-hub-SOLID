@@ -20,19 +20,14 @@ public class EquipamentoService {
 
     public EquipamentoResponse create(EquipamentoRequest equipamentoRequest){
         Equipamento equipamento = equipamentoMapper.paraEntidade(equipamentoRequest);
-        if(equipamentoRepository.existsById(equipamento.getId())){
 
-            throw new RuntimeException("Já existe um equipamento com este id");
-        }
         EquipamentoResponse equipamentoResponse = equipamentoMapper.paraDTO(equipamento);
 
         return equipamentoResponse;
     }
 
     public List<EquipamentoResponse> listAll(){
-        if(equipamentoRepository.findAll().isEmpty()){
-            throw new RuntimeException("Não existe nenhum equipamento cadastrado");
-        }else {
+
             List<Equipamento> equipamentos = equipamentoRepository.findAll();
             List<EquipamentoResponse> dto = new ArrayList<>();
 
@@ -40,7 +35,6 @@ public class EquipamentoService {
                 dto.add(equipamentoMapper.paraDTO(equipamento));
             }
             return dto;
-        }
     }
 
     public EquipamentoResponse findById(long id){

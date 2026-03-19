@@ -21,16 +21,13 @@ public class AulaService {
 
     public AulaResponse create(AulaRequest aulaRequest){
         Aula aula = aulaMapper.paraEntidade(aulaRequest);
-        if(aulaRepository.existsById(aula.getId())){
 
-            throw new RuntimeException("Já existe uma aula com este id");
-        }else {
 
         Aula aulaSalva = aulaRepository.save(aula);
         AulaResponse aulaResponse = aulaMapper.paraDTO(aulaSalva);
 
         return aulaResponse;
-        }
+
     }
 
     public List<AulaResponse> listAll (){
