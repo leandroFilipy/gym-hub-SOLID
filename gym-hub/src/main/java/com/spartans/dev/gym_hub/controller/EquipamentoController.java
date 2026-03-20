@@ -2,6 +2,7 @@ package com.spartans.dev.gym_hub.controller;
 
 import com.spartans.dev.gym_hub.dto.equipamento.EquipamentoRequest;
 import com.spartans.dev.gym_hub.dto.equipamento.EquipamentoResponse;
+import com.spartans.dev.gym_hub.interfaces.IEquipamentoService;
 import com.spartans.dev.gym_hub.service.EquipamentoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +15,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EquipamentoController {
 
-    private final EquipamentoService equipamentoService;
+    private final IEquipamentoService iEquipamentoService;
 
     @PostMapping("/register")
     public EquipamentoResponse create(EquipamentoRequest equipamentoRequest){
         try{
-            return equipamentoService.create(equipamentoRequest);
+            return iEquipamentoService.create(equipamentoRequest);
         }catch (RuntimeException e){
             throw new RuntimeException(e.getMessage());
         }
@@ -28,7 +29,7 @@ public class EquipamentoController {
     @GetMapping("/list")
     public List<EquipamentoResponse> list (){
         try{
-            return equipamentoService.listAll();
+            return iEquipamentoService.listAll();
         }catch (RuntimeException e){
             throw new RuntimeException(e.getMessage());
         }
@@ -37,7 +38,7 @@ public class EquipamentoController {
     @GetMapping("/list/{id}")
     public EquipamentoResponse listById(@PathVariable long id){
         try{
-            return equipamentoService.findById(id);
+            return iEquipamentoService.findById(id);
         }catch (RuntimeException e){
             throw new RuntimeException(e.getMessage());
         }
@@ -46,7 +47,7 @@ public class EquipamentoController {
     @PutMapping("update/{id}")
     public EquipamentoResponse update(@PathVariable long id, EquipamentoRequest equipamentoRequest){
         try{
-            return equipamentoService.update(id, equipamentoRequest);
+            return iEquipamentoService.update(id, equipamentoRequest);
         }catch (RuntimeException e){
             throw new RuntimeException(e.getMessage());
         }
@@ -55,7 +56,7 @@ public class EquipamentoController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity delete (@PathVariable long id){
         try{
-            equipamentoService.delete(id);
+            iEquipamentoService.delete(id);
             return ResponseEntity.status(201).body("O equipamento foi deletado");
         }catch (RuntimeException e){
             throw new RuntimeException(e.getMessage());

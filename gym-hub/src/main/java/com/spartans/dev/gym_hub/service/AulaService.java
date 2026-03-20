@@ -2,6 +2,11 @@ package com.spartans.dev.gym_hub.service;
 
 import com.spartans.dev.gym_hub.dto.aula.AulaRequest;
 import com.spartans.dev.gym_hub.dto.aula.AulaResponse;
+import com.spartans.dev.gym_hub.exceptions.AlunoNotFoundException;
+import com.spartans.dev.gym_hub.exceptions.AulaNotFoundException;
+import com.spartans.dev.gym_hub.interfaces.IAlunoMapper;
+import com.spartans.dev.gym_hub.interfaces.IAulaMapper;
+import com.spartans.dev.gym_hub.interfaces.IAulaService;
 import com.spartans.dev.gym_hub.mapper.aula.AulaMapper;
 import com.spartans.dev.gym_hub.model.Aula;
 import com.spartans.dev.gym_hub.repository.AulaRepository;
@@ -13,52 +18,46 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class AulaService {
+public class AulaService implements IAulaService {
 
     private final AulaRepository aulaRepository;
-    private final AulaMapper aulaMapper;
+    private final IAulaMapper iAulaMapper;
 
 
     public AulaResponse create(AulaRequest aulaRequest){
-        Aula aula = aulaMapper.paraEntidade(aulaRequest);
-
+        Aula aula = iAulaMapper.paraEntidade(aulaRequest);
 
         Aula aulaSalva = aulaRepository.save(aula);
-        AulaResponse aulaResponse = aulaMapper.paraDTO(aulaSalva);
+        AulaResponse aulaResponse = iAulaMapper.paraDTO(aulaSalva);
 
         return aulaResponse;
-
     }
 
     public List<AulaResponse> listAll (){
-        if(aulaRepository.findAll().isEmpty()){
-            throw new RuntimeException("Não existe nenhum aluno cadastrado");
 
-        }else {
             List<Aula> aulas = aulaRepository.findAll();
             List<AulaResponse> dto = new ArrayList<>();
 
             for (Aula aula : aulas) {
-                dto.add(aulaMapper.paraDTO(aula));
+                dto.add(iAulaMapper.paraDTO(aula));
             }
             return dto;
-        }
     }
 
     public AulaResponse findById(long id){
-        Aula aula = aulaRepository.findById(id).orElseThrow(() -> new RuntimeException("Não existe aluno com este ID"));
-        AulaResponse aulaResponse = aulaMapper.paraDTO(aula);
+        Aula aula = aulaRepository.findById(id).orElseThrow(() -> new AlunoNotFoundException("Não existe aluno com este ID"));
+        AulaResponse aulaResponse = iAulaMapper.paraDTO(aula);
 
         return aulaResponse;
     }
 
     public AulaResponse update(long id, AulaRequest aulaRequest){
-        Aula aula = aulaRepository.findById(id).orElseThrow(() -> new RuntimeException("Não existe aula com este id"));
+        Aula aula = aulaRepository.findById(id).orElseThrow(() -> new AlunoNotFoundException("Não existe aula com este id"));
         aula.setNome(aulaRequest.nome());
         aula.setDescricao(aulaRequest.descricao());
         aula.setDuracao(aulaRequest.duracao());
         Aula aulaSalva = aulaRepository.save(aula);
-        AulaResponse aulaResponse = aulaMapper.paraDTO(aulaSalva);
+        AulaResponse aulaResponse = iAulaMapper.paraDTO(aulaSalva);
 
         return aulaResponse;
     }
@@ -68,7 +67,7 @@ public class AulaService {
             aulaRepository.deleteById(id);
 
         }else {
-            throw new RuntimeException("Não existe uma aula com este ID");
+            throw new AulaNotFoundException("Não existe uma aula com este ID");
         }
 
     }

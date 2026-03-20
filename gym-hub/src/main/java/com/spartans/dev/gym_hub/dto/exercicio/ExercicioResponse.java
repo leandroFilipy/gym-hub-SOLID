@@ -3,7 +3,7 @@ package com.spartans.dev.gym_hub.dto.exercicio;
 
 public record ExercicioResponse(
 
-        Long id,
+        long id,
         String nome,
         String descricao,
         String videoURL,
