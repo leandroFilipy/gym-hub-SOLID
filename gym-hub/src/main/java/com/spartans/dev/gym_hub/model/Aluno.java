@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -40,16 +41,16 @@ public class Aluno {
     private String senha;
 
     @Column(nullable = false)
-    private Date dataCadastro;
+    private LocalDateTime dataCadastro;
 
     @Column(nullable = false)
-    private String imc;
+    private double imc;
 
     @Column(nullable = false)
     private String cpf;
 
 
-    public Aluno(String nome, Double altura, Double massaCorporal, Date nascimento, String user, String senha, Date dataCadastro, String imc, String cpf) {
+    public Aluno(String nome, Double altura, Double massaCorporal, Date nascimento, String user, String senha, LocalDateTime dataCadastro, double imc, String cpf) {
         this.nome = nome;
         this.altura = altura;
         this.massaCorporal = massaCorporal;
@@ -58,6 +59,16 @@ public class Aluno {
         this.senha = senha;
         this.dataCadastro = dataCadastro;
         this.imc = imc;
+        this.cpf = cpf;
+    }
+    public Aluno(String nome, Double altura, Double massaCorporal, Date nascimento, String user, String senha, LocalDateTime dataCadastro, String cpf) {
+        this.nome = nome;
+        this.altura = altura;
+        this.massaCorporal = massaCorporal;
+        this.nascimento = nascimento;
+        this.user = user;
+        this.senha = senha;
+        this.dataCadastro = dataCadastro;
         this.cpf = cpf;
     }
 }

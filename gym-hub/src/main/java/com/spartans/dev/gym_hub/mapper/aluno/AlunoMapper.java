@@ -16,8 +16,7 @@ public class AlunoMapper {
                 alunoRequest.nascimento(),
                 alunoRequest.user(),
                 alunoRequest.senha(),
-                alunoRequest.dataCadastro(),
-                alunoRequest.imc(),
+                java.time.LocalDateTime.now(),
                 alunoRequest.cpf());
     }
 

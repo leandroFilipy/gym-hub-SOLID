@@ -1,5 +1,6 @@
 package com.spartans.dev.gym_hub.dto.aluno;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public record AlunoResponse(
@@ -10,8 +11,8 @@ public record AlunoResponse(
         Date nascimento,
         String user,
         String senha,
-        Date dataCadastro,
-        String imc,
+        LocalDateTime dataCadastro,
+        double imc,
         String cpf
 ) {
 }
