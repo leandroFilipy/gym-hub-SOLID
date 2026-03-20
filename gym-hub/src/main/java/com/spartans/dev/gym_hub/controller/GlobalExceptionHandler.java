@@ -1,20 +1,24 @@
 package com.spartans.dev.gym_hub.controller;
 
-import com.spartans.dev.gym_hub.exceptions.AlunoNotFoundException;
+import com.spartans.dev.gym_hub.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(AlunoNotFoundException.class)
-    public ResponseEntity<String> handleNotFound (AlunoNotFoundException alunoNotFoundException){
+    public ResponseEntity<String> handleNotFound (RuntimeException ex, ProfessorNotFoundException professorNotFoundException,
+                                                  AulaNotFoundException aulaNotFoundException, ExercicioNotFoundException exercicioNotFoundException,
+                                                  EquipamentoNotFoundException equipamentoNotFoundException){
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(alunoNotFoundException.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
