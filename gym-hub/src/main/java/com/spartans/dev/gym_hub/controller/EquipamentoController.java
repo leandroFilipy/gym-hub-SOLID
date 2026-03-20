@@ -2,6 +2,7 @@ package com.spartans.dev.gym_hub.controller;
 
 import com.spartans.dev.gym_hub.dto.equipamento.EquipamentoRequest;
 import com.spartans.dev.gym_hub.dto.equipamento.EquipamentoResponse;
+import com.spartans.dev.gym_hub.interfaces.IEquipamentoService;
 import com.spartans.dev.gym_hub.service.EquipamentoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -10,56 +11,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/equipamentos")
+@RequestMapping("/equipment")
 @RequiredArgsConstructor
 public class EquipamentoController {
 
-    private final EquipamentoService equipamentoService;
+    private final IEquipamentoService iEquipamentoService;
 
-    @PostMapping("/cadastrar")
-    public EquipamentoResponse criarEquipamento(EquipamentoRequest equipamentoRequest){
-        try{
-            return equipamentoService.create(equipamentoRequest);
-        }catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
+    @PostMapping("/register")
+    public EquipamentoResponse create(@RequestBody EquipamentoRequest equipamentoRequest){
+            return iEquipamentoService.create(equipamentoRequest);
     }
 
-    @GetMapping("/listar")
-    public List<EquipamentoResponse> listarEquipamentos (){
-        try{
-            return equipamentoService.listAll();
-        }catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
+    @GetMapping("/list")
+    public List<EquipamentoResponse> list (){
+            return iEquipamentoService.listAll();
     }
 
-    @GetMapping("/listar/{id}")
-    public EquipamentoResponse listarEquipamentoPorId(@PathVariable long id){
-        try{
-            return equipamentoService.findById(id);
-        }catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
+    @GetMapping("/list/{id}")
+    public EquipamentoResponse listById(@PathVariable long id){
+            return iEquipamentoService.findById(id);
     }
 
-    @PutMapping("atualizar/{id}")
-    public EquipamentoResponse atualizarEquipamento(@PathVariable long id, EquipamentoRequest equipamentoRequest){
-        try{
-            return equipamentoService.update(id, equipamentoRequest);
-        }catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
+    @PutMapping("update/{id}")
+    public EquipamentoResponse update(@PathVariable long id, @RequestBody EquipamentoRequest equipamentoRequest){
+            return iEquipamentoService.update(id, equipamentoRequest);
     }
 
-    @DeleteMapping("/deletar/{id}")
-    public ResponseEntity deletarEquipamento (@PathVariable long id){
-        try{
-            equipamentoService.delete(id);
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity delete (@PathVariable long id){
+            iEquipamentoService.delete(id);
             return ResponseEntity.status(201).body("O equipamento foi deletado");
-        }catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
     }
 
 }

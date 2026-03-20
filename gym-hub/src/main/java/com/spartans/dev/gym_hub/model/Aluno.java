@@ -71,4 +71,9 @@ public class Aluno {
         this.dataCadastro = dataCadastro;
         this.cpf = cpf;
     }
+
+    public void calcularEAtualizarImc() {
+            double calculoImc = this.massaCorporal / (this.altura * this.altura);
+            this.imc = Math.round(calculoImc * 100.0) / 100.0;
+    }
 }
