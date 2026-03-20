@@ -13,12 +13,12 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/professores")
+@RequestMapping("/professor")
 public class ProfessorController {
 
     private final IProfessorService iProfessorService;
 
-    @PostMapping("/cadastrar")
+    @PostMapping("/register")
     public ProfessorResponse create(@RequestBody ProfessorRequest professorRequest){
         try{
             return iProfessorService.create(professorRequest);
@@ -27,7 +27,7 @@ public class ProfessorController {
         }
     }
 
-    @GetMapping("/listar")
+    @GetMapping("/list")
     public List<ProfessorResponse> listAll(){
         try{
             return iProfessorService.listAll();
@@ -36,7 +36,7 @@ public class ProfessorController {
         }
     }
 
-    @GetMapping("/listar/{id}")
+    @GetMapping("/list/{id}")
     public ProfessorResponse findById(@PathVariable long id){
         try{
             return iProfessorService.findById(id);
@@ -45,7 +45,7 @@ public class ProfessorController {
         }
     }
 
-    @PutMapping("/atualizar/{id}")
+    @PutMapping("/update/{id}")
     public ProfessorResponse update(@PathVariable long id, @RequestBody ProfessorRequest professorRequest){
         try{
             return iProfessorService.update(id, professorRequest);
@@ -54,7 +54,7 @@ public class ProfessorController {
         }
     }
 
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deletarProfessor(@PathVariable long id){
         try{
             iProfessorService.delete(id);

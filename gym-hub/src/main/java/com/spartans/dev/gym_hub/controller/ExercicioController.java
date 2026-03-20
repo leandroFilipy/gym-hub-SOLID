@@ -11,39 +11,39 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/exercicios")
+@RequestMapping("/exercise")
 public class ExercicioController {
 
 
     private final IExercicioService iExercicioService;
 
-    @PostMapping("/cadastrar")
+    @PostMapping("/register")
     public ExercicioResponse create(@RequestBody ExercicioRequest exercicioRequisicaoDTO) {
         return iExercicioService.create(exercicioRequisicaoDTO);
 
     }
 
-    @GetMapping("/listarTodos")
+    @GetMapping("/list")
     public List<ExercicioResponse> listAll() {
         return iExercicioService.listAll();
 
     }
 
 
-    @GetMapping("/listarId/{id}")
+    @GetMapping("/list/{id}")
     public ExercicioResponse listById(@PathVariable("id") Long id) {
         return iExercicioService.findById(id);
 
     }
 
-    @PutMapping("/atualizar/{id}")
+    @PutMapping("/update/{id}")
     public ExercicioResponse update(@PathVariable("id")long id, @RequestBody ExercicioRequest exercicioRequisicaoDTO) {
         return iExercicioService.update(id,exercicioRequisicaoDTO);
 
     }
 
 
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable("id")long id){
         iExercicioService.delete(id);
     }

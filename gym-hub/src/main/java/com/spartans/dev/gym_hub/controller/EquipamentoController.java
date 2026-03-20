@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/equipamentos")
+@RequestMapping("/equipment")
 @RequiredArgsConstructor
 public class EquipamentoController {
 
     private final IEquipamentoService iEquipamentoService;
 
     @PostMapping("/register")
-    public EquipamentoResponse create(EquipamentoRequest equipamentoRequest){
+    public EquipamentoResponse create(@RequestBody EquipamentoRequest equipamentoRequest){
         try{
             return iEquipamentoService.create(equipamentoRequest);
         }catch (RuntimeException e){
@@ -45,7 +45,7 @@ public class EquipamentoController {
     }
 
     @PutMapping("update/{id}")
-    public EquipamentoResponse update(@PathVariable long id, EquipamentoRequest equipamentoRequest){
+    public EquipamentoResponse update(@PathVariable long id, @RequestBody EquipamentoRequest equipamentoRequest){
         try{
             return iEquipamentoService.update(id, equipamentoRequest);
         }catch (RuntimeException e){
