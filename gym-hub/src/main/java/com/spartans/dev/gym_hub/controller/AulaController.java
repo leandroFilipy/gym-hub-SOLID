@@ -11,38 +11,38 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/aulas")
+@RequestMapping("/class")
 public class AulaController {
 
     private final IAulaService iAulaService;
 
-    @PostMapping("/cadastrar")
+    @PostMapping("/register")
     public AulaResponse create(@RequestBody AulaRequest aula) {
         return iAulaService.create(aula);
 
     }
 
-    @GetMapping("/listarTodos")
+    @GetMapping("/list")
     public List<AulaResponse> listAll() {
         return iAulaService.listAll();
 
     }
 
 
-    @GetMapping("/listarId/{id}")
+    @GetMapping("/list/{id}")
     public AulaResponse listId(@PathVariable("id") Long id) {
         return iAulaService.findById(id);
 
     }
 
-    @PutMapping("/atualizar/{id}")
+    @PutMapping("/update/{id}")
     public AulaResponse update(@PathVariable("id")long id, @RequestBody AulaRequest aulaRequisicaoDTO) {
         return iAulaService.update(id,aulaRequisicaoDTO);
 
     }
 
 
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable("id")Long id){
         iAulaService.delete(id);
     }

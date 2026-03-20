@@ -10,38 +10,38 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/alunos")
+@RequestMapping("/client")
 public class AlunoController {
     private final IAlunoService iAlunoService;
 
 
-    @PostMapping("/cadastrar")
+    @PostMapping("/register")
     public AlunoResponse create(@RequestBody AlunoRequest aluno) {
         return iAlunoService.create(aluno);
 
     }
 
-    @GetMapping("/listarTodos")
+    @GetMapping("/list")
     public List<AlunoResponse> listAll() {
         return iAlunoService.listAll();
 
     }
 
 
-    @GetMapping("/listarId/{id}")
+    @GetMapping("/list/{id}")
     public AlunoResponse listId(@PathVariable("id") Long id) {
         return iAlunoService.findById(id);
 
     }
 
-    @PutMapping("/atualizar/{id}")
+    @PutMapping("/update/{id}")
     public AlunoResponse update(@PathVariable("id")long id, @RequestBody AlunoRequest alunoRequisicaoDTO) {
         return iAlunoService.update(id,alunoRequisicaoDTO);
 
     }
 
 
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable("id")Long id){
         iAlunoService.delete(id);
     }

@@ -17,8 +17,8 @@ public class EquipamentoController {
 
     private final IEquipamentoService iEquipamentoService;
 
-    @PostMapping("/cadastrar")
-    public EquipamentoResponse criarEquipamento(EquipamentoRequest equipamentoRequest){
+    @PostMapping("/register")
+    public EquipamentoResponse create(EquipamentoRequest equipamentoRequest){
         try{
             return iEquipamentoService.create(equipamentoRequest);
         }catch (RuntimeException e){
@@ -26,8 +26,8 @@ public class EquipamentoController {
         }
     }
 
-    @GetMapping("/listar")
-    public List<EquipamentoResponse> listarEquipamentos (){
+    @GetMapping("/list")
+    public List<EquipamentoResponse> list (){
         try{
             return iEquipamentoService.listAll();
         }catch (RuntimeException e){
@@ -35,8 +35,8 @@ public class EquipamentoController {
         }
     }
 
-    @GetMapping("/listar/{id}")
-    public EquipamentoResponse listarEquipamentoPorId(@PathVariable long id){
+    @GetMapping("/list/{id}")
+    public EquipamentoResponse listById(@PathVariable long id){
         try{
             return iEquipamentoService.findById(id);
         }catch (RuntimeException e){
@@ -44,8 +44,8 @@ public class EquipamentoController {
         }
     }
 
-    @PutMapping("atualizar/{id}")
-    public EquipamentoResponse atualizarEquipamento(@PathVariable long id, EquipamentoRequest equipamentoRequest){
+    @PutMapping("update/{id}")
+    public EquipamentoResponse update(@PathVariable long id, EquipamentoRequest equipamentoRequest){
         try{
             return iEquipamentoService.update(id, equipamentoRequest);
         }catch (RuntimeException e){
@@ -53,8 +53,8 @@ public class EquipamentoController {
         }
     }
 
-    @DeleteMapping("/deletar/{id}")
-    public ResponseEntity deletarEquipamento (@PathVariable long id){
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity delete (@PathVariable long id){
         try{
             iEquipamentoService.delete(id);
             return ResponseEntity.status(201).body("O equipamento foi deletado");
