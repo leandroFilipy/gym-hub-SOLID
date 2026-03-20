@@ -20,47 +20,26 @@ public class ProfessorController {
 
     @PostMapping("/register")
     public ProfessorResponse create(@RequestBody ProfessorRequest professorRequest){
-        try{
             return iProfessorService.create(professorRequest);
-        }catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
     }
 
     @GetMapping("/list")
     public List<ProfessorResponse> listAll(){
-        try{
             return iProfessorService.listAll();
-        }catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
     }
 
     @GetMapping("/list/{id}")
     public ProfessorResponse findById(@PathVariable long id){
-        try{
             return iProfessorService.findById(id);
-        }catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
     }
 
     @PutMapping("/update/{id}")
     public ProfessorResponse update(@PathVariable long id, @RequestBody ProfessorRequest professorRequest){
-        try{
             return iProfessorService.update(id, professorRequest);
-        }catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deletarProfessor(@PathVariable long id){
-        try{
+    public void deletarProfessor(@PathVariable long id){
             iProfessorService.delete(id);
-            return ResponseEntity.status(201).body("Usuário foi deletado com sucesso");
-        }catch (RuntimeException e){
-            throw new RuntimeException(e.getMessage());
-        }
     }
 }
