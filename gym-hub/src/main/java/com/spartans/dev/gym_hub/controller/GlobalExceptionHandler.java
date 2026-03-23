@@ -13,10 +13,11 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(AlunoNotFoundException.class)
-    public ResponseEntity<String> handleNotFound (RuntimeException ex, ProfessorNotFoundException professorNotFoundException,
-                                                  AulaNotFoundException aulaNotFoundException, ExercicioNotFoundException exercicioNotFoundException,
-                                                  EquipamentoNotFoundException equipamentoNotFoundException){
+    @ExceptionHandler({AlunoNotFoundException.class, ProfessorNotFoundException.class,
+            AulaNotFoundException.class,
+            ExercicioNotFoundException.class,
+            EquipamentoNotFoundException.class})
+    public ResponseEntity<String> handleNotFound (RuntimeException ex){
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
