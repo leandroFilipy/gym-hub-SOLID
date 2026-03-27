@@ -1,11 +1,9 @@
-package com.spartans.dev.gym_hub.service;
+package com.spartans.dev.gym_hub.service.exercicioService;
 
 import com.spartans.dev.gym_hub.dto.exercicio.ExercicioRequest;
 import com.spartans.dev.gym_hub.dto.exercicio.ExercicioResponse;
 import com.spartans.dev.gym_hub.exceptions.ExercicioNotFoundException;
-import com.spartans.dev.gym_hub.interfaces.IExercicioMapper;
-import com.spartans.dev.gym_hub.interfaces.IExercicioService;
-import com.spartans.dev.gym_hub.mapper.ExercicioMapper;
+import com.spartans.dev.gym_hub.mapper.exercicio.IExercicioMapper;
 import com.spartans.dev.gym_hub.model.Exercicio;
 import com.spartans.dev.gym_hub.repository.ExercicioRepository;
 import lombok.RequiredArgsConstructor;

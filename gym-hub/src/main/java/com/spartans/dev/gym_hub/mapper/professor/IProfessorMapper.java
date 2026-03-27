@@ -1,4 +1,4 @@
-package com.spartans.dev.gym_hub.interfaces;
+package com.spartans.dev.gym_hub.mapper.professor;
 
 import com.spartans.dev.gym_hub.dto.professor.ProfessorRequest;
 import com.spartans.dev.gym_hub.dto.professor.ProfessorResponse;

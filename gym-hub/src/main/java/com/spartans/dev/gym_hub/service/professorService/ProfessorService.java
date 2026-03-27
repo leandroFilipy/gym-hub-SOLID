@@ -1,11 +1,9 @@
-package com.spartans.dev.gym_hub.service;
+package com.spartans.dev.gym_hub.service.professorService;
 
 import com.spartans.dev.gym_hub.dto.professor.ProfessorRequest;
 import com.spartans.dev.gym_hub.dto.professor.ProfessorResponse;
 import com.spartans.dev.gym_hub.exceptions.ProfessorNotFoundException;
-import com.spartans.dev.gym_hub.interfaces.IProfessorMapper;
-import com.spartans.dev.gym_hub.interfaces.IProfessorService;
-import com.spartans.dev.gym_hub.mapper.professor.ProfessorMapper;
+import com.spartans.dev.gym_hub.mapper.professor.IProfessorMapper;
 import com.spartans.dev.gym_hub.model.Professor;
 import com.spartans.dev.gym_hub.repository.ProfessorRepository;
 import lombok.RequiredArgsConstructor;

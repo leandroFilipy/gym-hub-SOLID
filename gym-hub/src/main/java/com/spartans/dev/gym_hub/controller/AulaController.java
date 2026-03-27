@@ -2,8 +2,7 @@ package com.spartans.dev.gym_hub.controller;
 
 import com.spartans.dev.gym_hub.dto.aula.AulaRequest;
 import com.spartans.dev.gym_hub.dto.aula.AulaResponse;
-import com.spartans.dev.gym_hub.interfaces.IAulaService;
-import com.spartans.dev.gym_hub.service.AulaService;
+import com.spartans.dev.gym_hub.service.aulaService.IAulaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

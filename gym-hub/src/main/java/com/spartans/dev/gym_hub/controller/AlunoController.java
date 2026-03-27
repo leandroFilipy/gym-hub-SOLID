@@ -2,7 +2,7 @@ package com.spartans.dev.gym_hub.controller;
 
 import com.spartans.dev.gym_hub.dto.aluno.AlunoRequest;
 import com.spartans.dev.gym_hub.dto.aluno.AlunoResponse;
-import com.spartans.dev.gym_hub.interfaces.IAlunoService;
+import com.spartans.dev.gym_hub.service.alunoService.IAlunoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

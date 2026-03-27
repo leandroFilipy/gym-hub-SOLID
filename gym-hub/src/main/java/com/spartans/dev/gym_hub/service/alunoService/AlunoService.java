@@ -1,11 +1,9 @@
-package com.spartans.dev.gym_hub.service;
+package com.spartans.dev.gym_hub.service.alunoService;
 
 import com.spartans.dev.gym_hub.dto.aluno.AlunoRequest;
 import com.spartans.dev.gym_hub.dto.aluno.AlunoResponse;
 import com.spartans.dev.gym_hub.exceptions.AlunoNotFoundException;
-import com.spartans.dev.gym_hub.interfaces.IAlunoMapper;
-import com.spartans.dev.gym_hub.interfaces.IAlunoService;
-import com.spartans.dev.gym_hub.mapper.aluno.AlunoMapper;
+import com.spartans.dev.gym_hub.mapper.aluno.IAlunoMapper;
 import com.spartans.dev.gym_hub.model.Aluno;
 import com.spartans.dev.gym_hub.repository.AlunoRepository;
 import lombok.RequiredArgsConstructor;

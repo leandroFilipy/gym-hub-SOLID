@@ -1,11 +1,8 @@
 package com.spartans.dev.gym_hub.mapper;
 
 import com.spartans.dev.gym_hub.dto.exercicio.ExercicioRequest;
-import com.spartans.dev.gym_hub.dto.exercicio.ExercicioRequest;
 import com.spartans.dev.gym_hub.dto.exercicio.ExercicioResponse;
-import com.spartans.dev.gym_hub.dto.exercicio.ExercicioResponse;
-import com.spartans.dev.gym_hub.interfaces.IExercicioMapper;
-import com.spartans.dev.gym_hub.interfaces.IExercicioService;
+import com.spartans.dev.gym_hub.mapper.exercicio.IExercicioMapper;
 import com.spartans.dev.gym_hub.model.Exercicio;
 import org.springframework.stereotype.Component;
 

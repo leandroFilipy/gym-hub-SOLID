@@ -1,4 +1,4 @@
-package com.spartans.dev.gym_hub.interfaces;
+package com.spartans.dev.gym_hub.service.exercicioService;
 
 import com.spartans.dev.gym_hub.dto.exercicio.ExercicioRequest;
 import com.spartans.dev.gym_hub.dto.exercicio.ExercicioResponse;

@@ -2,8 +2,7 @@ package com.spartans.dev.gym_hub.controller;
 
 import com.spartans.dev.gym_hub.dto.equipamento.EquipamentoRequest;
 import com.spartans.dev.gym_hub.dto.equipamento.EquipamentoResponse;
-import com.spartans.dev.gym_hub.interfaces.IEquipamentoService;
-import com.spartans.dev.gym_hub.service.EquipamentoService;
+import com.spartans.dev.gym_hub.service.equipamentoService.IEquipamentoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

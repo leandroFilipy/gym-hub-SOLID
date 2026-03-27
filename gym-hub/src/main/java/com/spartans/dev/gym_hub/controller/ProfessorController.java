@@ -2,10 +2,8 @@ package com.spartans.dev.gym_hub.controller;
 
 import com.spartans.dev.gym_hub.dto.professor.ProfessorRequest;
 import com.spartans.dev.gym_hub.dto.professor.ProfessorResponse;
-import com.spartans.dev.gym_hub.interfaces.IProfessorService;
-import com.spartans.dev.gym_hub.service.ProfessorService;
+import com.spartans.dev.gym_hub.service.professorService.IProfessorService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
