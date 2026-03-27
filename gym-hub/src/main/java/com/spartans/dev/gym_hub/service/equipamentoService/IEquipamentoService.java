@@ -1,4 +1,4 @@
-package com.spartans.dev.gym_hub.interfaces;
+package com.spartans.dev.gym_hub.service.equipamentoService;
 
 import com.spartans.dev.gym_hub.dto.equipamento.EquipamentoRequest;
 import com.spartans.dev.gym_hub.dto.equipamento.EquipamentoResponse;

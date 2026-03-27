@@ -1,4 +1,4 @@
-package com.spartans.dev.gym_hub.interfaces;
+package com.spartans.dev.gym_hub.mapper.aula;
 
 import com.spartans.dev.gym_hub.dto.aula.AulaRequest;
 import com.spartans.dev.gym_hub.dto.aula.AulaResponse;

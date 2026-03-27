@@ -1,11 +1,9 @@
-package com.spartans.dev.gym_hub.service;
+package com.spartans.dev.gym_hub.service.equipamentoService;
 
 import com.spartans.dev.gym_hub.dto.equipamento.EquipamentoRequest;
 import com.spartans.dev.gym_hub.dto.equipamento.EquipamentoResponse;
 import com.spartans.dev.gym_hub.exceptions.EquipamentoNotFoundException;
-import com.spartans.dev.gym_hub.interfaces.IEquipamentoMapper;
-import com.spartans.dev.gym_hub.interfaces.IEquipamentoService;
-import com.spartans.dev.gym_hub.mapper.equipamento.EquipamentoMapper;
+import com.spartans.dev.gym_hub.mapper.equipamento.IEquipamentoMapper;
 import com.spartans.dev.gym_hub.model.Equipamento;
 import com.spartans.dev.gym_hub.repository.EquipamentoRepository;
 import lombok.RequiredArgsConstructor;

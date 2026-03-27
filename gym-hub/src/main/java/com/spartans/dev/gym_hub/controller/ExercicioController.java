@@ -2,8 +2,7 @@ package com.spartans.dev.gym_hub.controller;
 
 import com.spartans.dev.gym_hub.dto.exercicio.ExercicioRequest;
 import com.spartans.dev.gym_hub.dto.exercicio.ExercicioResponse;
-import com.spartans.dev.gym_hub.interfaces.IExercicioService;
-import com.spartans.dev.gym_hub.service.ExercicioService;
+import com.spartans.dev.gym_hub.service.exercicioService.IExercicioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
